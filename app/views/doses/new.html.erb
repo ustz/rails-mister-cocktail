@@ -5,7 +5,7 @@
         <%= simple_form_for([@cocktail, @dose]) do |f| %>
         <%= f.error_notification %>
         <%= f.input :description %>
-        <%= f.input :ingredient, collection: @ingredients %>
+        <%= f.association :ingredient %>
         <%= f.submit class: 'btn btn-success' %>
         <%= link_to "Back", root_path %>
         <% end %>

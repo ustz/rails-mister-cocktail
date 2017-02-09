@@ -6,6 +6,8 @@
   <h3>Ingredient :</h3>
   <% @cocktail.doses.each do |dose| %>
     <p><%= dose.description %> of <%= dose.ingredient.name %></p>
+    <%= link_to "Delete", dose_path(dose), method: :delete, data: { confirm: "Are you sure ?" },class: "btn btn-danger" %>
   <% end %>
-  <%= link_to "New ingredient", new_cocktail_dose_path(@cocktail), class: "btn btn-success" %>
+  <br><br>
+  <%= link_to "New dose", new_cocktail_dose_path(@cocktail), class: "btn btn-success" %>
 </div>
