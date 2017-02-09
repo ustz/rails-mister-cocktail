@@ -7,7 +7,8 @@ class DosesController < ApplicationController
   end
 
   def create
-    ingredient = Ingredient.find(params[:dose][:ingredient])
+    # raise
+    params[:dose][:ingredient] == "" ? ingredient = nil : ingredient = Ingredient.find(params[:dose][:ingredient])
     dose = Dose.new(description: params[:dose][:description], ingredient: ingredient, cocktail: @cocktail)
     if dose.save
     @cocktail.doses << dose
@@ -16,6 +17,7 @@ class DosesController < ApplicationController
     ingredient.save
     redirect_to cocktail_path(@cocktail)
     else
+      @dose = Dose.new
       render :new
     end
   end
@@ -31,3 +33,18 @@ class DosesController < ApplicationController
   end
 
 end
+
+  # def create
+  #   raise
+  #   ingredient = Ingredient.find(params[:dose][:ingredient])
+  #   dose = Dose.new(description: params[:dose][:description], ingredient: ingredient, cocktail: @cocktail)
+  #   if dose.save
+  #   @cocktail.doses << dose
+  #   @cocktail.save
+  #   ingredient.doses << dose
+  #   ingredient.save
+  #   redirect_to cocktail_path(@cocktail)
+  #   else
+  #     render :new
+  #   end
+  # end
