@@ -7,7 +7,6 @@ class DosesController < ApplicationController
   end
 
   def create
-    raise
     ingredient = Ingredient.find(params[:dose][:ingredient])
     dose = Dose.create(description: params[:dose][:description], ingredient: ingredient, cocktail: @cocktail)
     @cocktail.doses << dose
