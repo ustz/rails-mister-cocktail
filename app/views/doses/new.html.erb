@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="form-section">
+      <div class="card">
+        <h1 class="text-center">New</h1>
+        <%= simple_form_for([@cocktail, @dose]) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :description %>
+        <%= f.input :ingredient, collection: @ingredients %>
+        <%= f.submit class: 'btn btn-success' %>
+        <%= link_to "Back", root_path %>
+        <% end %>
+      </div>
+    </div>
+</div>
