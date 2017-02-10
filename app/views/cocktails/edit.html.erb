@@ -1,4 +1,21 @@
-<div class="container">
-  <h1>Edit</h1>
-    <%= render 'form' , form: @cocktail%>
+<div class="container form-container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <div class="title">
+        <h1>Edit</h1>
+        <%= link_to "Back", cocktail_path(@cocktail), class: "btn btn-primary" %>
+      </div>
+      <div class="edit-form">
+        <%= render 'form' , form: @cocktail%>
+      </div>
+      <div class="new-dose">
+        <%= simple_form_for([@cocktail, @dose]) do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :description %>
+          <%= f.association :ingredient %>
+          <%= f.submit class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,14 +1,32 @@
-<div class="container">
-  <h1><%= @cocktail.name %></h1>
-  <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
-  <%= link_to "Back", root_path, class: "btn btn-primary" %>
-  <%= link_to "Edit", edit_cocktail_path(@cocktail), class: "btn btn-success" %>
-  <%= link_to "Delete", cocktail_path, method: :delete, data: { confirm: "Are you sure ?" },class: "btn btn-danger" %>
-  <h3>Ingredient :</h3>
-  <% @cocktail.doses.each do |dose| %>
-    <p><%= dose.description %> of <%= dose.ingredient.name %></p>
-    <%= link_to "Delete", dose_path(dose), method: :delete,class: "btn btn-danger" %>
-  <% end %>
-  <br><br>
-  <%= link_to "New dose", new_cocktail_dose_path(@cocktail), class: "btn btn-success" %>
+
+<div class="container show-container">
+  <div class="title">
+    <h1><%= @cocktail.name %></h1>
+    <biv class="buttons">
+      <%= link_to "Back", root_path, class: "btn btn-primary" %>
+      <%= link_to "Edit", edit_cocktail_path(@cocktail), class: "btn btn-success" %>
+      <%= link_to "Delete", cocktail_path, method: :delete, data: { confirm: "Are you sure ?" },class: "btn btn-danger" %>
+    </biv>
+  </div>
+
+  <div class="infos-section">
+    <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+    <div class="description">
+      <table style="width:100%">
+        <tr>
+          <th class="ingredient"><h2>Ingredient :</h2></th>
+          <th class="dose">
+            <ul>
+              <% @cocktail.doses.each do |dose| %>
+                <li><%= dose.description %> of <%= dose.ingredient.name %> - <%= link_to "Delete", dose_path(dose), method: :delete %>
+                </li>
+              <% end %>
+
+            </ul>
+          </th>
+        </tr>
+      </table>
+
+    </div>
+  </div>
 </div>

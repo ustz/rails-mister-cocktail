@@ -1,7 +1,9 @@
-<div class="container">
-  <div class="form-section">
-    <div class="card-new">
-      <h1 class="text-center">New</h1>
+<div class="container form-container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <div class="title">
+        <h1>New</h1>
+      </div>
       <%= simple_form_for(@cocktail) do |f| %>
       <%= f.error_notification %>
       <%= f.input :name %>

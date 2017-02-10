@@ -23,6 +23,7 @@ class CocktailsController < ApplicationController
   end
 
   def edit
+    @dose = Dose.new
   end
 
   def update
