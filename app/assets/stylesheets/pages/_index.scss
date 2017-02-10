@@ -12,7 +12,13 @@
   position: relative;
   border-radius: 4px;
   margin: 20px 10px;
+  transition: all 0.4s ease;
 }
+
+.card:hover {
+  transform: scale(1.1);
+}
+
 .card-user {
   position: absolute;
   right: 10px;
